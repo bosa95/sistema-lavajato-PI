@@ -6,15 +6,17 @@
 {% endblock %}
 
 {% block 'dashboard' %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md card-dashboard">
-                <p class="text-card">Adicionar clientes</p>
-            </div>
-            <div class="col-md card-dashboard">
-                <p class=text-card>Atualizar clientes</p>
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <div onclick="exibir_form('1')" class="col-md card-dashboard">
+            <p class="text-card">Adicionar clientes</p>
+        </div> 
+
+        <div onclick="exibir_form('2')" class="col-md card-dashboard">
+            <p class="text-card">Atualizar clientes</p>
+        </div> 
+
+    </div>
 
         <div id="adicionar-cliente" class="adicionar-cliente">
             <form action="{% url 'clientes' %}" method="POST">{% csrf_token %}
@@ -38,23 +40,24 @@
                 <div class="add-carros">
                     <h3>Carros</h3>
                     <span class="btn-add-carros" onclick="add_carro()">+ Adicionar um carro</span>
+                    #TODO: remover carros
                     <div id="form-carro">
                         {% for carro, placa, ano in carros%}
-                            <br>
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type='text' placeholder='carro' class='form-control' name='carro' value="{{carro}}">
-                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <input type='text' placeholder='carro' class='form-control' name='carro' value="{{carro}}">
+                                    </div>
 
-                                <div class="col-md">
-                                    <input type='text' placeholder='Placa' class='form-control' name='placa' value="{{placa}}">
-                                </div>
+                                    <div class="col-md">
+                                        <input type='text' placeholder='Placa' class='form-control' name='placa' value="{{placa}}">
+                                    </div>
 
-                                <div class="col-md">
-                                    <input type='number' placeholder='ano' class='form-control' name='ano' value="{{ano}}">
-                                </div>
+                                    <div class="col-md">
+                                        <input type='number' placeholder='ano' class='form-control' name='ano' value="{{ano}}">
+                                    </div>
 
-                            </div>
+                                </div>
                         {% endfor%}
                     </div>
 
@@ -62,9 +65,33 @@
 
                 <br>
                 <input type="submit" value="Cadastrar" class="btn-principal">
-      
+
             </form>
-            
+    
+        </div>
+
+
+        <div id="att_cliente">
+            <p></p>
+            <select id="cliente-select" onchange="dados_cliente()" class="form-control">
+                {% for cliente in clientes %}
+                <option value="{{cliente.id}}">{{cliente.nome}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <hr>
+
+            <div id="form-att-cliente">
+                <p>Nome:</p>
+                <input id="nome" type="text" class='form-control'>
+                <p>Sobrenome:</p>
+                <input id="sobrenome" type="text" class='form-control'>
+                <p>E-mail:</p>
+                <input id="email" type="text" class='form-control'>
+                <p>CPF:</p>
+                <input id="cpf" type="text" class='form-control'>
+            </div>
+
         </div>
 
     </div>
