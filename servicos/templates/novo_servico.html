@@ -24,8 +24,9 @@
                     {{field}}
                 </section>
             {% endfor %}
-
-            <input type="submit" class="btn btn-success" value="Salvar">
+            <br>
+            <input style="margin-right: 10px;" type="submit" class="btn btn-success" value="Salvar">
+            <a href="{% url 'listar_servico' %}"><input type="button" value="Cancelar" class="btn btn-danger" ></a>
         </form>
     </div>
 
