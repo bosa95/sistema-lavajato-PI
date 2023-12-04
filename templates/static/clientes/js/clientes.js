@@ -73,12 +73,10 @@ function dados_cliente(){
                             <input class='form-control' type='text' name='ano' value='" + data['carros'][i]['fields']['ano'] + "' >\
                         </div>\
                         <div class='col-md'>\
-                            <input class='btn btn-lg btn-success' type='submit'>\
+                            <input style='margin-right: 10px; margin-left: -10px;' class='btn btn-success' type='submit'>\
+                            <a href='/clientes/excluir_carro/"+ data['carros'][i]['id'] +"' class='btn btn-danger'>EXCLUIR</a>\
                         </div>\
                     </form>\
-                    <div class='col-md'>\
-                        <a href='/clientes/excluir_carro/"+ data['carros'][i]['id'] +"' class='btn btn-lg btn-danger'>EXCLUIR</a>\
-                    </div>\
                 </div><br>"
         }
         

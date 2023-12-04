@@ -26,7 +26,7 @@
                 <tr>
                     <th><a href="{% url 'servico' servico.identificador %}">{{servico.identificador}}</a></th>
                     <td>{{servico.titulo}}</td>
-                    <td>{{servico.cliente}}</td>
+                    <td>{{servico.cliente.nome}} {{servico.cliente.sobrenome}}</td>
                     <td>
                     {% if servico.finalizado %}
                         <span class="badge badge-success">Finalizado</span>

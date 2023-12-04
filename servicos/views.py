@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .forms import FormServico
 from django.http import HttpResponse, FileResponse
-from .models import Servico, ServicoAdicional
+from .models import Servico
 from fpdf import FPDF
 from io import BytesIO
 
@@ -36,7 +36,7 @@ def gerar_os(request, identificador):
 
     pdf.set_fill_color(240,240,240)
     pdf.cell(35, 10, 'Cliente:', 1, 0, 'L', 1)
-    pdf.cell(0, 10, f'{servico.cliente.nome}', 1, 1, 'L', 1)
+    pdf.cell(0, 10, f'{servico.cliente.nome + servico.cliente.sobrenome}', 1, 1, 'L', 1)
 
     pdf.cell(35, 10, 'Manutenções:', 1, 0, 'L', 1)
 
